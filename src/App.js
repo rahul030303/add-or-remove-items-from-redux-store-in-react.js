@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import {useDispatch,useSelector} from 'react-redux';
+import addFriend from './actions/addFriend';
+import removeFriend from './actions/removeFriend';
+
 
 function App() {
+
+  const dispatch= useDispatch();
+  const friends= useSelector(state=>[state.friends]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Hello
+
+      <h1>{friends}</h1>
+      <button onClick={()=>dispatch(addFriend('reaml'))}>Add friend</button><br></br><br></br>
+      <button onClick={()=>dispatch(removeFriend())}>Remove friend</button>
     </div>
   );
 }
 
 export default App;
+
